@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main (){
+    char op;
+    double num1, num2, resultado;
+    
+    printf("--- Calculadora C Eficiente ---\n\n");
+    printf("Digite a operação [ A (operador) B ]\n");
+    printf("Exemplo: 10 + 5 (Escreva 'sair' para encerrar)\n");
+    printf("Suporta: (+ - * /)\n");
+    
+    while (1) {
+        printf("\n> ");
+        if (scanf("%lf %c %lf", &num1, &op, &num2) != 3) {
+            printf("\nEncerrando a calculadora...\n");
+            break;
+        }
+
+        switch (op) {
+            case '+': resultado = num1 + num2; break;
+            case '-': resultado = num1 - num2; break;
+            case '*': resultado = num1 * num2; break;
+            case '/':
+                if (num2 == 0){
+                    printf("Erro: Divisão por zero nao permitida.\n");
+                    continue;
+                }
+                resultado = num1 / num2;
+                break;
+            default:
+                printf("Erro: operador '%c' invalido.\n", op);
+                continue;
+        }
+        printf("Resultado: %.2f\n", resultado);
+        printf("------------------\n");
+    } 
+    return 0;
+}
